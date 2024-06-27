@@ -7,7 +7,10 @@ def get_vacancy(title, salary=0,
                 employment_part = False,
                 start_after_sixteen = False,
                 only_saturday_and_sunday = False,
-                employment_project = False):
+                employment_project = False,
+                not_required_or_not_specified = False,
+                higher = False,
+                special_secondary = False):
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
@@ -21,6 +24,9 @@ def get_vacancy(title, salary=0,
     part_time3 = 'part_time=start_after_sixteen&' if start_after_sixteen else ''
     part_time4 = 'part_time=only_saturday_and_sunday&' if only_saturday_and_sunday else ''
     part_time5 = 'part_time=employment_project&' if employment_project else ''
+    education1 = 'education=not_required_or_not_specified&' if not_required_or_not_specified else ''
+    education2 = 'education=higher&' if higher else ''
+    education3 = 'education=special_secondary&' if special_secondary else ''
     hh_request = requests.get(f'https://hh.ru/search/vacancy?'
                               f'L_save_area=true&'
                               f'text={title}&'
@@ -31,16 +37,16 @@ def get_vacancy(title, salary=0,
                               f'experience=doesNotMatter&'
                               f'order_by=relevance&'
                               f'search_period=0&'
-                              f'{part_time}'
-                              f'{part_time2}'
-                              f'{part_time3}'
-                              f'{part_time4}'
-                              f'{part_time5}'
+                              f'{part_time}&'
+                              f'{part_time2}&'
+                              f'{part_time3}&'
+                              f'{part_time4}&'
+                              f'{part_time5}&'
                               f'salary={salary}&'
                               f'items_on_page=100&'
-                              f'education=not_required_or_not_specified&'
-                              f'education=higher&'
-                              f'education=special_secondary&'
+                              f'{education1}&'
+                              f'{education2}&'
+                              f'{education3}&'
                               f'hhtmFrom=vacancy_search_filter', headers=headers)
 
 
