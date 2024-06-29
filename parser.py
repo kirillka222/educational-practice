@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup as bs
 import requests
-
+import db_session
+db_session.global_init("Vacancy.db")
+from db_model import Vacancy
 
 def get_vacancy(title, salary=0,
                 from_four_to_six_hours_in_a_day = False,
@@ -65,9 +67,17 @@ def get_vacancy(title, salary=0,
                                       else 'compensation-text' in tag})
         salary = '' if salary is None else salary.text
         list_of_vacancy += [(title,experience,work_hours,salary)]
-        print(title, experience, work_hours, salary)
 
 
+    for title,experience,work_hours,salary in list_of_vacancy:
+        db_sess = db_session.create_session()
+        vac = Vacancy()
+        vac.title = title
+        vac.experience = experience
+        vac.work_hours = work_hours
+        vac.salary = salary
+        db_sess.add(vac) # запрос
+        db_sess.commit() # выполнили запрос
     return list_of_vacancy
 get_vacancy("python")
 
