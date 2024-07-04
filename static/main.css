@@ -1,0 +1,26 @@
+.box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 310px;
+  padding: 20px;
+  background-color: #fff;
+}
+.title {
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.vacancy {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.salary {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+.button{
+  display: block;
+  width: 15%;
+  padding: 10px 0;
+  border-radius: 6px;
+}
