@@ -11,7 +11,8 @@ def get_vacancy(text, salary=0, experience=[], schedule=[], employment=[], educa
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     }
 
-    url = "https://hh.ru/search/vacancy?L_save_area=true&excluded_text=&area=113&salary=&currency_code=RUR&order_by=relevance&search_period=0&only_with_salary=true&hhtmFrom=vacancy_search_filter"
+    url = ("https://hh.ru/search/vacancy?L_save_area=true&excluded_text=&area=113&salary="
+           "&currency_code=RUR&order_by=relevance&search_period=0&only_with_salary=true&hhtmFrom=vacancy_search_filter")
     hh_request = requests.get(url=url, headers=headers, params={
         "text": text,
         "salary": salary,

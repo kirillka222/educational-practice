@@ -9,3 +9,7 @@ class Vacancy(SqlAlchemyBase):
     title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     experience = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     salary = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+
+
+
+
